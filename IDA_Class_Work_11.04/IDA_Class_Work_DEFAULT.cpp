@@ -5,6 +5,8 @@
 #include <algorithm>
 //#include <array>
 
+#include "Header_1.h"
+
 #define _PI 3.14
 
 #define Forever for(int _i=0;;_i++)
@@ -13,11 +15,43 @@
 #define end   }
 
 #define sum(a,b) a+b
-//#define 
+ 
 #define arr_cout(arr, size) std::cout << "[";\
 for (int i = 0; i<size;i++)\
 std::cout <<arr[i]<<" | ";\
 std::cout << "\b\b]\n"
+
+// Conditional compilation. Works with integer values ONLY
+#if 5<4
+
+#define var 666
+
+#elif 5==4
+
+#define var 0
+
+#else
+// # - transform to std::string
+#define show(p) std::cout << #p <<"\n"
+#define var(name) std::cout <<#name<< " = "<< name <<"\n"
+
+#endif
+
+#ifdef _PI
+
+void func(){}
+
+#endif
+
+#ifndef PI
+
+void func2() {}
+
+#endif
+
+// ## code concatenation
+#define concat(a,b) a ## b
+
 
 // Service functions prototypes ------------------------------------
 int Get_Int_SA();			// String-analysis вариант фильтра INTEGER
@@ -52,6 +86,7 @@ void Task_1()
 	end
 	//_PI=8; // Error
 }
+
 //Task 2. Preprocessor macroses
 void Task_2()
 {	
@@ -66,14 +101,52 @@ void Task_2()
 	arr_cout(arr, Size);
 }
 
+// Task_3. Preprocessor operators: #, 
+void Task_3()
+{
+	show(i loved C++);
+	int n = 10;
+	var(n);
+
+	double tmp = 1.555;
+	std::cout << "tmp = " << concat(t, mp) << "\n";
+}
+
+// Task_4
+void Task_4()
+{
+	std::cout << "\n" << _PI;
+
+#undef _PI
+
+//	std::cout << _PI; //Error: _PI is alredy undefined
+
+#define _PI 222
+
+	std::cout<<"\n" << _PI;
+
+}
+#undef _PI
+
+//Task_5. Сonditional compilation
+void Task_5()
+{
+	std::cout << "Task_4";
+	return;
+}
+
+
+
 // MAIN ------- MAIN ------- MAIN ------- MAIN ------- MAIN --------
 int main()
 {
 srand(time(NULL));
 		
 //Task_1();
- Task_2();
-
+ //Task_2();
+//Task_3();
+//Task_4();
+Task_5();
 
 
 
